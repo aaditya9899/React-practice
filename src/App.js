@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Title from './components/Title';
 import Modal from './components/Modal';
 function App() {
-  const [showModal,setShowModal]=useState(true)
+  const [showModal,setShowModal]=useState(false)
   const [events,setEvents]= useState([
      
     {title:"mario's birthday bash",id:1},
@@ -17,6 +17,9 @@ function App() {
 
 
 const handleClose=()=>{
+  setShowModal(true)
+}
+const HandleClose=()=>{
   setShowModal(false)
 }
 
@@ -35,7 +38,8 @@ const handleClose=()=>{
                 </p> 
                 
    </Modal> */}
-   {showModal && <Modal handleClose={handleClose}>
+   <button onClick={handleClose}>Click to read terms and conditions</button>
+   {showModal && <Modal handleClose={HandleClose}>
    <h1>Terms and condition</h1>
    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas eveniet ea tempore libero tenetur reprehenderit sapiente culpa suscipit tempora. Culpa quam alias perferendis beatae natus, quibusdam voluptatibus iste veritatis enim.</p>
 
