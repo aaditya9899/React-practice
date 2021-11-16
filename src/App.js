@@ -23,7 +23,7 @@ const HandleClose=()=>{
   setShowModal(false)
 }
 
- const subtitle="All the latest events in Marioland"
+ const subtitle="All the latest events in Delhi"
 
   return (
     <div className="App">
