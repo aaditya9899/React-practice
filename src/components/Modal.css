@@ -15,3 +15,15 @@
     border-radius: 10px;
 
 }
+
+/* Global css  */
+.h2{
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}  
+ 
+/* limited to modal scope only  */
+.modal h1{
+    border-bottom: 1px solid blue;
+    padding-bottom: 10px;
+}

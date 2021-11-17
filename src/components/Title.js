@@ -1,9 +1,7 @@
-import React from 'react'
-
-
+import './Title.css'
 export default function Title(props) {
     return (
-        <div>
+        <div className="title-block">
             <h1 className="title">
                 
                {props.title} 
