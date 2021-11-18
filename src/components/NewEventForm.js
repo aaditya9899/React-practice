@@ -29,6 +29,7 @@ export default function NewEventForm({addEvent}) {
 
     addEvent(event)
     resetForm()
+    
     }
 
     return (
