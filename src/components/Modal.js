@@ -1,7 +1,7 @@
 import './Modal.css'
 
 
-export default function Modal({children,handleClose}) {
+export default function Modal({children}) {
     return (
         <div className="modal-backdrop">
 
@@ -11,8 +11,7 @@ export default function Modal({children,handleClose}) {
                textAlign:"center"
            }}>
               {children}
-              <div><button onClick={handleClose}>close</button></div>
-              
+
             </div>
             
         </div>
