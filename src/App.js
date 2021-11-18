@@ -1,51 +1,59 @@
-//import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react';
-import Title from './components/Title';
-import Modal from './components/Modal';
+import './App.css'
+import React, { useState } from 'react'
+import Title from './components/Title'
+import Modal from './components/Modal'
+import EventList from './components/EventList'
+import NewEventForm from './components/NewEventForm'
+
 function App() {
-  const [showModal,setShowModal]=useState(false)
-  const [events,setEvents]= useState([
-     
-    {title:"mario's birthday bash",id:1},
-    {title:"bowers live stream",id:2},
-    {title:"race on moo moo",id:3}
-    
- ])
- console.log(setShowModal)
+  const [showModal, setShowModal] = useState(false)
+  const [showEvents, setShowEvents] = useState(true)
+  const [events, setEvents] = useState([
+    {title: "mario's birthday bash", id: 1},
+    {title: "bowser's live stream", id: 2},
+    {title: "race on moo moo farm", id: 3}
+  ])
 
+  const handleClick = (id) => {
+    setEvents(prevEvents => {
+      return prevEvents.filter(event => id !== event.id)
+    })
+  }
 
+  const handleClose = () => {
+    setShowModal(false)
+  }
 
-const handleClose=()=>{
-  setShowModal(true)
-}
-const HandleClose=()=>{
-  setShowModal(false)
-}
-
- const subtitle="All the latest events in Delhi"
+  const subtitle = "All the latest events in Marioland"
 
   return (
     <div className="App">
-   <Title title="Events in your area" subtitle={subtitle}/>
-   <Title title="Another title" subtitle="Another subtitle"/>
-   {/* <Modal>
-    <h2>
-              10% Off Coupon code!!
-              </h2>
-                <p>
-           Use the code NINJA10 at the checkout.
-                </p> 
-                
-   </Modal> */}
-   <button onClick={handleClose}>Click to read terms and conditions</button>
-   {showModal && <Modal handleClose={HandleClose}>
-   <h1>Terms and condition</h1>
-   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas eveniet ea tempore libero tenetur reprehenderit sapiente culpa suscipit tempora. Culpa quam alias perferendis beatae natus, quibusdam voluptatibus iste veritatis enim.</p>
+      <Title title="Marioland Events" subtitle={subtitle} />
+      
+      {showEvents && (
+        <div>
+          <button onClick={() => setShowEvents(false)}>Hide Events</button>
+        </div>
+      )}
+      {!showEvents && (
+        <div>
+          <button onClick={() => setShowEvents(true)}>Show Events</button>
+        </div>
+      )}
+      {showEvents && <EventList events={events} handleClick={handleClick} />}
+      
+      {showModal && (
+        <Modal handleClose={handleClose} isSalesModal={true}>
 
-   <a href="...">Find out more...</a>
-   </Modal>}
-   </div>
+          <NewEventForm/>
+
+        </Modal>
+      )}
+
+      <div>
+        <button onClick={() => setShowModal(true)}>Add New Event</button>
+      </div>
+    </div>
   );
 }
 
